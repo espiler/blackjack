@@ -1,0 +1,31 @@
+.card {
+  float: left;
+  width: 100px;
+  height: 200px;
+  margin-right: 60px;
+}
+
+img {
+  height: 100%;
+}
+
+.covered {
+  background-color: black;
+}
+
+.hand {
+  overflow: auto;
+}
+
+button {
+  display: inline;
+}
+
+.winner {
+  display: inline;
+  margin: 20px 0 0 30px;
+}
+
+.newGame {
+  margin: 20px 0 0 0;
+}

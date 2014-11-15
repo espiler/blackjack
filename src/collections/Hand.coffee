@@ -6,7 +6,6 @@ class window.Hand extends Backbone.Collection
     null
 
   hit: ->
-    debugger;
     @add(@deck.pop())
     if @correctScore() > 21
       @trigger 'busted', @
@@ -36,20 +35,23 @@ class window.Hand extends Backbone.Collection
 
   dealerFlip: ->
     @at(0).flip()
-    @dealerPlay()
+    self = @
+    setTimeout (self.dealerPlay.bind self), 700
 
   dealerEndsBustedGame: ->
     @at(0).flip()
-
+    @trigger 'dealerWins', @
 
   dealerPlay: ->
-    @hit() until @correctScore() >= 17
-    if @correctScore() == 17 and @minScore() == 7
+    self = @
+    if @correctScore() < 17 or @correctScore() == 17 and @minScore() == 7
       @hit()
-      @dealerPlay()
+      setTimeout (self.dealerPlay.bind self), 1000
+
+    else if @busted isnt true
+      @trigger 'compareHands', @
     null
 
-  busted: false
 
 
 
