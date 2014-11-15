@@ -2,10 +2,16 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-
+    @set 'busted', false
+    null
 
   hit: ->
+    debugger;
     @add(@deck.pop())
+    if @correctScore() > 21
+      @trigger 'busted', @
+      @set 'busted', true
+    null
 
   playerStand: ->
     @trigger 'dealerPlay', @
@@ -32,10 +38,20 @@ class window.Hand extends Backbone.Collection
     @at(0).flip()
     @dealerPlay()
 
+  dealerEndsBustedGame: ->
+    @at(0).flip()
+
+
   dealerPlay: ->
     @hit() until @correctScore() >= 17
-    if @correctScore() == 17 and @minScore() == 7 then @dealerPlay() console.log "soft 17"
+    if @correctScore() == 17 and @minScore() == 7
+      @hit()
+      @dealerPlay()
     null
+
+  busted: false
+
+
 
 
 

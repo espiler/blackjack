@@ -7,4 +7,6 @@ class window.App extends Backbone.Model
     @set 'dealerHand', deck.dealDealer()
     (@get 'playerHand').on 'dealerPlay', =>
       (@get 'dealerHand').dealerFlip()
+    (@get 'playerHand').on 'busted', =>
+      @trigger 'busted'
     null
