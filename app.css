@@ -1,3 +1,10 @@
+body {
+  background-image: url('src/imgs/bg.png');
+  text-align: center;
+  font-family: 'Raleway';
+  padding: 8%;
+}
+
 .card {
   float: left;
   width: 100px;
@@ -15,6 +22,8 @@ img {
 
 .hand {
   overflow: auto;
+  width: 320px;
+  margin: 15px auto 0 auto;
 }
 
 button {

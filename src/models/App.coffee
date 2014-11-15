@@ -18,7 +18,6 @@ class window.App extends Backbone.Model
     (@get 'dealerHand').on 'dealerWins', =>
       @trigger 'dealerWins'
 
-
     (@get 'dealerHand').on 'compareHands', =>
       @compareHands()
 

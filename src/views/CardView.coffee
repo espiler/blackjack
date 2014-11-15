@@ -1,15 +1,14 @@
 class window.CardView extends Backbone.View
   className: 'card'
+  tagName: 'span'
 
-  # template: _.template '<%= rankName %> of <%= suitName %>'
-  template: _.template '<img src = "src/cards/<%= rankName %><%= suitName %>.png"></img>'
-  templateBack: _.template '<img src = "src/cards/back.png"></img>'
+  template: _.template '<img src = "src/imgs/cards/<%= rankName %><%= suitName %>.png"></img>'
+  templateBack: _.template '<img src = "src/imgs/cards/back.png"></img>'
 
   initialize: ->
     @render()
     @model.on 'change:revealed', =>
       @render()
-
 
   render: ->
     @$el.children().detach()
